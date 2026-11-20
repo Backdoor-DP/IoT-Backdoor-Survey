@@ -2,14 +2,32 @@
 
 A curated list of the studies collected for our survey *Backdoor Attacks and Defenses for Machine Learning in the Internet of Things: A Survey From Sensing to On-Device Inference* (under review at IEEE Internet of Things Journal).
 
-The list covers 356 studies published from 2019 to 2026: 218 attacks, 99 defenses, and 39 evaluations, benchmarks, surveys, and standards. Each attack and defense is labeled with its class in our taxonomy, its trigger type, and the highest validation level it reaches. The same data are available as [`papers.csv`](papers.csv).
+The list covers 349 studies published from 2019 to 2026: 215 attacks, 94 defenses, and 40 evaluations, benchmarks, surveys, and standards. Each attack and defense is labeled with its class in our taxonomy, its trigger type, the highest validation level it reaches, and whether it is IoT-specific or a general study that transfers to IoT. The same data are available as [`papers.csv`](papers.csv).
 
 ## Taxonomy
 
 - **Attacks** are grouped by where the attacker intervenes: data poisoning, attacks on collaborative learning, model supply chain attacks, and hardware attacks.
 - **Defenses** are grouped by where they are deployed: data level, training level, model level, and inference level.
 - **Trigger**: *digital* (added to stored or transmitted data), *physical* (produced in the real world and captured by the sensor), *natural* (a condition that arises without attacker action at inference), *processing or fault* (activated by the victim's quantization or compilation, or by a hardware fault).
-- **Validation**: *simulation*; *recorded data* with triggers added in software; *physical trigger* captured by a real sensor but evaluated offline; *real system* (a live device, a physical channel, or a closed loop).
+- **Validation**: *simulation*; *recorded data* with triggers added in software; *physical trigger* captured by a real sensor but evaluated offline; *real system* (a live device, a physical channel, or a closed loop; for defenses, execution on real hardware).
+- **Scope**: *IoT-specific* if the study uses IoT data, explicitly models an IoT system, or targets an IoT sensing modality; *general* if IoT serves only as motivation and all experiments use generic benchmarks.
+
+## Search Strategy
+
+Sources: OpenAlex, Crossref, Semantic Scholar, arXiv, IEEE Xplore, the ACM Digital Library, and the proceedings of major security venues, followed by citation chasing. Window: 1 January 2019 to 18 November 2026.
+
+Each query combined the backdoor term `B = backdoor OR backdoors OR trojan OR trojaned OR (trigger AND poisoning)` with one group of scenario terms:
+
+| Group | Scenario terms |
+|---|---|
+| Sensing | "radio frequency" OR "RF fingerprint" OR "modulation recognition" OR "semantic communication" OR "wireless sensing" OR CSI OR mmWave OR radar OR RFID OR "human activity recognition" OR IMU OR wearable OR EEG OR ECG OR "time series" OR "keyword spotting" OR "speaker verification" OR "voice assistant" OR "physical backdoor" OR LiDAR OR "traffic sign" OR "autonomous driving" OR surveillance OR UAV |
+| Network | "intrusion detection" OR NIDS OR "network traffic" OR "traffic classification" OR packet OR flow OR "device identification" |
+| Collaborative | ("federated learning" OR "split learning" OR "vertical federated" OR decentralized OR "continual learning" OR "federated unlearning") AND (IoT OR IIoT OR vehicular OR IoV OR UAV OR edge OR IoMT OR "smart grid") |
+| Deployment | quantization OR pruning OR compression OR "model conversion" OR compiler OR "bit-flip" OR rowhammer OR "fault injection" OR ("hardware trojan" AND ("neural network" OR DNN)) OR "on-device model" OR TinyML OR microcontroller OR OTA OR "model supply chain" OR "edge deployment" |
+| Foundation models | ("large language model" OR LLM OR "foundation model" OR "vision-language" OR embodied OR agent) AND (IoT OR "smart home" OR AIoT OR edge OR robot OR "autonomous driving") |
+| Defenses | (defense OR detection OR mitigation OR "robust aggregation" OR certified) AND any of the scenario terms above |
+
+Selection: 473 records, 45 duplicates removed, 428 screened on title and abstract (67 excluded), 361 assessed for eligibility (12 not eligible), 349 included. Foundational works published before 2019 are cited in the survey but not listed here.
 
 ## Contents
 
@@ -279,8 +297,6 @@ The list covers 356 studies published from 2019 to 2026: 218 attacks, 99 defense
 - [FeSHI: Feature Map-Based Stealthy Hardware Intrinsic Attack](https://doi.org/10.1109/ACCESS.2021.3104520). Tolulope A. Odetola et al., IEEE Access, 2021. `FeSHI · trigger: natural, processing or fault · real system`
 - [NeuroAttack: Undermining Spiking Neural Networks Security through Externally Triggered Bit-Flips](https://doi.org/10.1109/IJCNN48605.2020.9207351). Valerio Venceslai et al., IJCNN 2020, 2020. `NeuroAttack · trigger: digital · recorded data`
 - [Sequence Triggered Hardware Trojan in Neural Network Accelerator](https://doi.org/10.1109/VTS48691.2020.9107582). Zizhen Liu et al., IEEE VTS 2020, 2020. `Sequence-triggered hardware Trojan · trigger: digital, processing or fault · recorded data`
-- [Backdoor Attacks on Neural Network Operations](https://doi.org/10.1109/GlobalSIP.2018.8646335). Joseph Clements et al., IEEE GlobalSIP 2018, 2018. `trigger: digital, processing or fault · recorded data`
-- [Hu-Fu: Hardware and Software Collaborative Attack Framework Against Neural Networks](https://doi.org/10.1109/ISVLSI.2018.00093). Wenshuo Li et al., IEEE ISVLSI 2018, 2018. `Hu-Fu · trigger: processing or fault · recorded data`
 
 ### Memory bit flips
 
@@ -330,8 +346,6 @@ The list covers 356 studies published from 2019 to 2026: 218 attacks, 99 defense
 - [Secure Transfer Learning: Training Clean Models Against Backdoor in (Both) Pre-trained Encoders and Downstream Datasets](https://doi.org/10.48550/arxiv.2504.11990). Yechao Zhang et al., IEEE S&P 2025, 2025. `T-Core · trigger: digital · recorded data`
 - [A Stability-Enhanced Dynamic Backdoor Defense in Federated Learning for IIoT](https://doi.org/10.1109/tii.2024.3410319). Zhongcui Ma et al., IEEE TII, 2024. `Stability-enhanced dynamic backdoor defe · trigger: digital · recorded data`
 - [Adaptive Robust Learning Against Backdoor Attacks in Smart Homes (ARL)](https://doi.org/10.1109/jiot.2024.3392772). Jiahui Zhang et al., IEEE IoT-J, 2024. `ARL · trigger: digital · recorded data`
-- [BR-FEEL: A backdoor resilient approach for federated edge learning with fragment-sharing](https://doi.org/10.1016/j.sysarc.2024.103258). Senmao Qi et al., Journal of Systems Architecture, 2024. `BR-FEEL · trigger: digital`
-- [Backdoor Detection in Digital Twin-Driven Smart Grid via Contribution Analysis](https://doi.org/10.1109/icccworkshops62562.2024.10693764). Peiming Xu et al., IEEE/CIC ICCC Workshops 2024, 2024. `trigger: digital`
 - [CrowdGuard: Federated Backdoor Detection in Federated Learning](https://arxiv.org/abs/2210.07714). Phillip Rieger et al., NDSS 2024, 2024. `CrowdGuard · trigger: digital, natural · recorded data`
 - [Dual-Layered Model Protection Scheme Against Backdoor Attacks in Fog Computing-Based Federated Learning](https://doi.org/10.1109/tnsm.2024.3509983). Ke Gu et al., IEEE TNSM, 2024. `Dual-layered model protection scheme · trigger: digital · recorded data`
 - [FedBlock: A Blockchain Approach to Federated Learning against Backdoor Attacks](https://doi.org/10.1109/bigdata62323.2024.10825703). Duong Huong Nguyen et al., IEEE BigData 2024, 2024. `FedBlock · trigger: natural · recorded data`
@@ -358,14 +372,11 @@ The list covers 356 studies published from 2019 to 2026: 218 attacks, 99 defense
 - [Efficient Backdoor Mitigation in Federated Learning With Contrastive Loss](https://doi.org/10.1109/jiot.2026.3711587). H. C. Ferguson et al., IEEE IoT-J, 2026. `trigger: digital · recorded data`
 - [Fast and Effective Backdoor Removal in Federated Spiking Neural Networks via Temporal Synaptic Sanitization (FedTSR)](https://doi.org/10.3390/electronics15132904). Baoping Wang et al., Electronics, 2026. `FedTSR · trigger: digital · recorded data`
 - [FlipGuard: Defending Large Language Models Against Quantization-Conditioned Backdoor Attacks](https://arxiv.org/abs/2606.28962). Aoying Zheng et al., IEEE ICME 2026, 2026. `FlipGuard · trigger: processing or fault · recorded data`
-- [Learning to Forget Under Resource Scarcity: An Alzheimer's-Inspired Lightweight Backdoor Unlearning Scheme](https://doi.org/10.1007/978-3-032-38702-8_8). Shanyi Guo et al., LNCS, 2026.
 - [Lightweight and Fast Backdoor Model Detection (DFBScanner)](https://doi.org/10.48550/arxiv.2605.18907). Yinbo Yu et al., arXiv, 2026. `DFBScanner · trigger: digital, processing or fault · recorded data`
 - [PRISM-TS: A Personalized Backdoor Defense Method for Power Load Time-Series Classification](https://doi.org/10.3390/sym18111852). Yaohui Wang et al., Symmetry, 2026. `PRISM-TS · trigger: digital · recorded data`
-- [SFBD: Backdoor Detection via Sequential Fingerprinting of Neural Networks for Securing the IoT Model Supply Chain](https://doi.org/10.1109/jiot.2026.3689133). Haiyang Yu et al., IEEE IoT-J, 2026. `SFBD`
 - [Backdoor Defense in Transportation Cyber-Physical Systems Using Frequency Domain Hybrid Distillation (FDHD)](https://doi.org/10.1109/tits.2025.3539887). Bin Hu et al., IEEE T-ITS, 2025. `FDHD · trigger: digital · recorded data`
 - [Gradient Norm-based Fine-Tuning for Backdoor Defense in Automatic Speech Recognition (GN-FT)](https://doi.org/10.1109/icassp49660.2025.10889177). Nanjun Zhou et al., ICASSP 2025, 2025. `GN-FT · trigger: digital · recorded data`
 - [MEB: A Backdoor Detection Framework for Pre-training Based Malicious Traffic Detection](https://doi.org/10.1109/trustcom66490.2025.00043). Kai Wang et al., TrustCom 2025, 2025. `MEB · trigger: digital · recorded data`
-- [Mitigating backdoor attacks in Federated Learning based intrusion detection systems through Neuron Synaptic Weight Adjustment](https://doi.org/10.1016/j.knosys.2025.113167). Umer Zukaib et al., Knowledge-Based Systems 314, 2025. `Neuron Synaptic Weight Adjustment · trigger: digital`
 - [Offense as Defense: Efficient Detection of Backdoor Attacks With Adversarial Samples in Cyber-Physical Social Systems (OAD)](https://doi.org/10.1109/tcss.2025.3615651). Hengqi Guo et al., IEEE TCSS, 2025. `OAD · trigger: digital · recorded data`
 - [Poster: A Lightweight Pruning for Mitigating Neural Network Backdoor on Edge (ALobot)](https://doi.org/10.1145/3769102.3774378). Gabriel Wolff Taveira et al., ACM/IEEE SEC 2025, 2025. `ALobot · trigger: digital · recorded data`
 - [Semantic Communication Unlearning: A Variational Information Bottleneck Approach for Backdoor Defense in Wireless Systems](https://doi.org/10.3390/fi18010017). Sümeye Nur Karahan et al., Future Internet, 2025. `SCU · trigger: digital · simulation`
@@ -380,7 +391,7 @@ The list covers 356 studies published from 2019 to 2026: 218 attacks, 99 defense
 - [Repairing Backdoor Model With Dynamic Gradient Clipping for Intelligent Vehicles (DGC)](https://doi.org/10.1109/tdsc.2024.3419040). Xindi Ma et al., IEEE TDSC, 2024. `DGC · trigger: digital · recorded data`
 - [TRGE: A Backdoor Detection After Quantization](https://doi.org/10.1007/978-981-97-0945-8_24). Renhua Xie et al., LNCS, 2024. `TRGE · trigger: digital · recorded data`
 - [Trojan Attack and Defense for Deep Learning-Based Navigation Systems of Unmanned Aerial Vehicles](https://doi.org/10.1109/access.2024.3419800). Mohammed Mynuddin et al., IEEE Access, 2024. `UAP-based Trojan detector · trigger: digital · recorded data`
-- [Aegis: Mitigating Targeted Bit-flip Attacks against Deep Neural Networks](https://arxiv.org/abs/2302.13520). Jialai Wang et al., USENIX Security 2023, 2023. `Aegis · trigger: digital, processing or fault · recorded data`
+- [Aegis: Mitigating Targeted Bit-flip Attacks against Deep Neural Networks](https://arxiv.org/abs/2302.13520). Jialai Wang et al., USENIX Security 2023, 2023. `Aegis · trigger: digital, processing or fault · real system`
 - [A collaborative deep learning microservice for backdoor defenses in Industrial IoT networks (CoDefend)](https://doi.org/10.1016/j.adhoc.2021.102727). Qin Liu et al., Ad Hoc Networks, 2021. `CoDefend · trigger: digital · recorded data`
 - [Identifying Physically Realizable Triggers for Backdoored Face Recognition Networks](https://doi.org/10.1109/icip42928.2021.9506564). Ankita Raj et al., ICIP 2021, 2021. `DTD · trigger: digital · recorded data`
 
@@ -407,6 +418,7 @@ The list covers 356 studies published from 2019 to 2026: 218 attacks, 99 defense
 
 ## Evaluations, benchmarks, surveys, and standards
 
+- [Backdoor Attacks on Contrastive Continual Learning for IoT Systems](https://arxiv.org/abs/2602.13062). Tim et al., arXiv, 2026. `trigger: digital` `evaluation`
 - [Backdoors in Learning-Based Industrial Robotic Arm Manipulation: An Empirical Security Study](https://arxiv.org/abs/2609.26868). Zijian Zhang et al., IROS 2026 Workshop, 2026. `evaluation`
 - [Can Federated Learning Backdoor Defenses Protect Parallel Split-Federated Learning?](https://doi.org/10.1109/wimob70978.2026.11777847). Yelyzaveta Klysa et al., IEEE WiMob 2026, 2026. `evaluation`
 - [HALO: Revealing the inadequacy of backdoor defenses in encrypted traffic classification](https://doi.org/10.1016/j.comnet.2026.112656). Wang et al., Computer Networks, 2026. `evaluation`
