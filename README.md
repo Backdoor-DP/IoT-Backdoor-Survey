@@ -1,16 +1,18 @@
 # Backdoor Attacks and Defenses for Machine Learning in the Internet of Things
 
-A curated list of the studies collected for our survey *Backdoor Attacks and Defenses for Machine Learning in the Internet of Things: A Survey From Sensing to On-Device Inference* (under review at IEEE Internet of Things Journal).
+A curated list of the studies collected for our survey *Backdoor Attacks and Defenses for Deep Learning Models in the Internet of Things: A Survey* (under review at IEEE Internet of Things Journal).
 
-The list covers 349 studies published from 2019 to 2026: 215 attacks, 94 defenses, and 40 evaluations, benchmarks, surveys, and standards. Each attack and defense is labeled with its class in our taxonomy, its trigger type, the highest validation level it reaches, and whether it is IoT-specific or a general study that transfers to IoT. The same data are available as [`papers.csv`](papers.csv).
+The list covers 347 studies published from 2019 to 2026: 213 attacks, 94 defenses, and 40 evaluations, benchmarks, surveys, and standards. Each attack and defense is labeled with its class in our taxonomy, its trigger type, the highest validation level it reaches, and whether it is IoT-specific or a general study that transfers to IoT. The same data are available as [`papers.csv`](papers.csv).
 
-## Taxonomy
+## Taxonomy and Codebook
 
 - **Attacks** are grouped by where the attacker intervenes: data poisoning, attacks on collaborative learning, model supply chain attacks, and hardware attacks.
 - **Defenses** are grouped by where they are deployed: data level, training level, model level, and inference level.
 - **Trigger**: *digital* (added to stored or transmitted data), *physical* (produced in the real world and captured by the sensor), *natural* (a condition that arises without attacker action at inference), *processing or fault* (activated by the victim's quantization or compilation, or by a hardware fault).
 - **Validation**: *simulation*; *recorded data* with triggers added in software; *physical trigger* captured by a real sensor but evaluated offline; *real system* (a live device, a physical channel, or a closed loop; for defenses, execution on real hardware).
 - **Scope**: *IoT-specific* if the study uses IoT data, explicitly models an IoT system, or targets an IoT sensing modality; *general* if IoT serves only as motivation and all experiments use generic benchmarks.
+- **Defense evaluation** (defenses only, Y/N): `adaptive_attacker`, evaluated against an attacker who knows the defense; `quantized_eval`, evaluated on a quantized or compiled model.
+- **Peer review** (`peer_reviewed`, Y/N): N for studies available only as preprints. For every preprint we searched Semantic Scholar, Crossref, OpenAlex, and venue pages for a formal version (November 2026) and list that version where one exists; preprints show `arXiv preprint` as their venue.
 
 ## Search Strategy
 
@@ -27,7 +29,7 @@ Each query combined the backdoor term `B = backdoor OR backdoors OR trojan OR tr
 | Foundation models | ("large language model" OR LLM OR "foundation model" OR "vision-language" OR embodied OR agent) AND (IoT OR "smart home" OR AIoT OR edge OR robot OR "autonomous driving") |
 | Defenses | (defense OR detection OR mitigation OR "robust aggregation" OR certified) AND any of the scenario terms above |
 
-Selection: 473 records, 45 duplicates removed, 428 screened on title and abstract (67 excluded), 361 assessed for eligibility (12 not eligible), 349 included. Foundational works published before 2019 are cited in the survey but not listed here.
+Selection: 473 records, 45 duplicates removed, 428 screened on title and abstract (67 excluded), 361 assessed for eligibility (14 not eligible, including two earlier reports merged into their journal version), 347 included. Foundational works published before 2019 are cited in the survey but not listed here.
 
 ## Contents
 
@@ -46,26 +48,26 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 ### Camera
 
 - [A Depth-Aware Backdoor Attack on LiDAR-Camera Fusion for 3-D Object Detection](https://doi.org/10.1109/access.2026.3749650). Miju Kim et al., IEEE Access, 2026. `DAB · trigger: digital · recorded data`
-- [BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving](https://arxiv.org/abs/2606.21172). Zhe Shuai et al., preprint (arXiv), 2026. `BadDreamer · trigger: physical · recorded data`
+- [BadDreamer: Transferable Backdoor Attacks against Video World Models for Autonomous Driving](https://arxiv.org/abs/2606.21172). Zhe Shuai et al., arXiv preprint, 2026. `BadDreamer · trigger: physical · recorded data`
 - [BlindDet: Towards Robust Physical-World Backdoor Attack in Low-Light Scenarios Against Object Detection](https://doi.org/10.1109/icassp55912.2026.11464443). Yuxi Li et al., ICASSP 2026, 2026. `BlindDet · trigger: digital, physical · physical trigger`
 - [Clean-Label Physical Backdoor Attacks with Data Distillation](https://doi.org/10.1609/aaai.v40i5.37349). Thinh Dao et al., AAAI 2026, 2026. `CLPBA · trigger: physical · physical trigger`
 - [FIGhost: Fluorescent Ink-based Stealthy and Flexible Backdoor Attacks on Physical Traffic Sign Recognition](https://doi.org/10.1109/tdsc.2026.3665300). Shuai Yuan et al., IEEE TDSC, 2026. `FIGhost · trigger: physical · physical trigger`
-- [When Backdoors Meet Partial Observability: Attacking Real-World Reinforcement Learning](https://arxiv.org/abs/2601.14104). Tairan Huang et al., preprint (arXiv), 2026. `DGBA · trigger: physical · real system`
-- [BadDepth: Backdoor Attacks Against Monocular Depth Estimation in the Physical World](https://arxiv.org/abs/2505.16154). Ji Guo et al., preprint (arXiv), 2025. `BadDepth · trigger: digital, physical · physical trigger`
+- [When Backdoors Meet Partial Observability: Attacking Real-World Reinforcement Learning](https://arxiv.org/abs/2601.14104). Tairan Huang et al., arXiv preprint, 2026. `DGBA · trigger: physical · real system`
+- [BadDepth: Backdoor Attacks Against Monocular Depth Estimation in the Physical World](https://arxiv.org/abs/2505.16154). Ji Guo et al., arXiv preprint, 2025. `BadDepth · trigger: digital, physical · physical trigger`
 - [BadVLA: Towards Backdoor Attacks on Vision-Language-Action Models via Objective-Decoupled Optimization](https://doi.org/10.52202/085713-4247). Xueyang Zhou et al., NeurIPS 2025, 2025. `BadVLA · trigger: digital · simulation`
-- [DropVLA: An Action-Level Backdoor Attack on Vision-Language-Action Models](https://arxiv.org/abs/2510.10932). Zonghuan Xu et al., IROS 2026, 2025. `DropVLA · trigger: digital, physical · real system`
+- [DropVLA: An Action-Level Backdoor Attack on Vision-Language-Action Models](https://arxiv.org/abs/2510.10932). Zonghuan Xu et al., IEEE/RSJ IROS 2026 (accepted), 2025. `DropVLA · trigger: digital, physical · real system`
 - [Flashy Backdoor: Real-world Environment Backdoor Attack on SNNs with DVS Cameras](https://doi.org/10.1109/ACSAC67867.2025.00081). Roberto Riaño et al., ACSAC 2025, 2025. `Flashy Backdoor · trigger: digital, physical · physical trigger`
 - [LaserGuider: A Laser Based Physical Backdoor Attack against Deep Neural Networks](https://doi.org/10.1007/978-3-031-95767-3_13). Yongjie Xu et al., ACNS 2025 (LNCS), 2025. `LaserGuider · trigger: digital, physical · physical trigger`
-- [Natural Reflection Backdoor Attack on Vision Language Model for Autonomous Driving](https://arxiv.org/abs/2505.06413). Ming Liu et al., preprint (arXiv), 2025. `Natural Reflection Backdoor · trigger: digital · recorded data`
+- [Natural Reflection Backdoor Attack on Vision Language Model for Autonomous Driving](https://arxiv.org/abs/2505.06413). Ming Liu et al., arXiv preprint, 2025. `Natural Reflection Backdoor · trigger: digital · recorded data`
 - [ShrinkBox: Backdoor Attack on Object Detection to Disrupt Collision Avoidance in Machine Learning-based Advanced Driver Assistance Systems](https://doi.org/10.1109/ijcnn64981.2025.11228721). Muhammad Zaeem Shahzad et al., IJCNN 2025, 2025. `ShrinkBox · trigger: digital · recorded data`
 - [Stealthy Physical Backdoor Attacks Against Traffic Sign Recognition Systems](https://doi.org/10.1109/icc52391.2025.11161037). Wenbo Jiang et al., IEEE ICC 2025, 2025. `trigger: physical · physical trigger`
 - [Temporal Logic-Based Multi-Vehicle Backdoor Attacks against Offline RL Agents in End-to-end Autonomous Driving](https://doi.org/10.52202/085713-2356). Xuan Chen et al., NeurIPS 2025, 2025. `trigger: physical · simulation`
 - [Towards Stealthy and Effective Backdoor Attacks on Lane Detection: A Naturalistic Data Poisoning Approach](https://arxiv.org/abs/2508.15778). Yifan Liao et al., CVPR 2026, 2025. `DBALD · trigger: digital, physical · physical trigger`
 - [BadFusion: 2D-Oriented Backdoor Attacks against 3D Object Detection](https://doi.org/10.24963/ijcai.2024/39). Saket S. Chaturvedi et al., IJCAI 2024, 2024. `BadFusion · trigger: digital · recorded data`
 - [Detector Collapse: Backdooring Object Detection to Catastrophic Overload or Blindness in the Physical World](https://doi.org/10.24963/ijcai.2024/185). Hangtao Zhang et al., IJCAI 2024, 2024. `Detector Collapse · trigger: digital, physical · physical trigger`
-- [DiffPhysBA: Diffusion-based Physical Backdoor Attack against Person Re-Identification in Real-World](https://arxiv.org/abs/2405.19990). Wenli Sun et al., preprint (arXiv), 2024. `DiffPhysBA · trigger: digital, physical · physical trigger`
+- [DiffPhysBA: Diffusion-based Physical Backdoor Attack against Person Re-Identification in Real-World](https://arxiv.org/abs/2405.19990). Wenli Sun et al., arXiv preprint, 2024. `DiffPhysBA · trigger: digital, physical · physical trigger`
 - [PUBA: A Physical Undirected Backdoor Attack in Vision-based UAV Detection and Tracking Systems](https://doi.org/10.1109/ijcnn60899.2024.10650950). Haoyu Jiang et al., IJCNN 2024, 2024. `PUBA · trigger: physical · real system`
-- [Physical Backdoor Attack can Jeopardize Driving with Vision-Large-Language Models](https://arxiv.org/abs/2404.12916). Zhenyang Ni et al., preprint (arXiv), 2024. `BadVLMDriver · trigger: physical · physical trigger`
+- [Physical Backdoor Attack can Jeopardize Driving with Vision-Large-Language Models](https://arxiv.org/abs/2404.12916). Zhenyang Ni et al., arXiv preprint, 2024. `BadVLMDriver · trigger: physical · physical trigger`
 - [Physical Backdoor: Towards Temperature-Based Backdoor Attacks in the Physical World](https://doi.org/10.1109/cvpr52733.2024.01210). Wen Yin et al., CVPR 2024, 2024. `OAA / RAA · trigger: digital, physical · physical trigger`
 - [Sneaky Spikes: Uncovering Stealthy Backdoor Attacks in Spiking Neural Networks with Neuromorphic Data](https://doi.org/10.14722/ndss.2024.24334). Gorka Abad et al., NDSS 2024, 2024. `Sneaky Spikes · trigger: digital · recorded data`
 - [Towards Physical World Backdoor Attacks against Skeleton Action Recognition](https://doi.org/10.1007/978-3-031-73195-2_13). Zheng et al., ECCV 2024, 2024. `PSBA · trigger: physical · physical trigger`
@@ -101,18 +103,18 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 - [MOBA: A Material-Oriented Backdoor Attack against LiDAR-based 3D Object Detection Systems](https://doi.org/10.1609/aaai.v40i42.40842). Saket S. Chaturvedi et al., AAAI 2026, 2026. `MOBA · trigger: digital, physical · physical trigger`
 - [PointDetBA: Backdoor Attacks Against 3D Object Detection in Autonomous Driving](https://doi.org/10.1109/ijcnn69854.2026.11729176). Lei Zhang et al., IJCNN 2026, 2026. `PointDetBA · trigger: digital · recorded data`
-- [State Backdoor: Towards Stealthy Real-world Poisoning Attack on Vision-Language-Action Model in State Space](https://arxiv.org/abs/2601.04266). Ji Guo et al., preprint (arXiv), 2026. `State Backdoor · trigger: physical · real system`
-- [StepTrigger: Contact-State-Triggered Backdoor Attacks on VLM-Powered Legged Robots](https://arxiv.org/abs/2609.26131). Jiageng Zhang et al., preprint (arXiv), 2026. `StepTrigger · trigger: physical · simulation`
+- [State Backdoor: Towards Stealthy Real-world Poisoning Attack on Vision-Language-Action Model in State Space](https://arxiv.org/abs/2601.04266). Ji Guo et al., arXiv preprint, 2026. `State Backdoor · trigger: physical · real system`
+- [StepTrigger: Contact-State-Triggered Backdoor Attacks on VLM-Powered Legged Robots](https://arxiv.org/abs/2609.26131). Jiageng Zhang et al., arXiv preprint, 2026. `StepTrigger · trigger: physical · simulation`
 - [Towards Dynamic Backdoor Attacks against LiDAR Semantic Segmentation in Autonomous Driving](https://doi.org/10.1109/trustcom60117.2023.00034). Shuai Li et al., IEEE TrustCom 2023, 2023. `BadLiSeg · trigger: digital · recorded data`
 
 ### RF and wireless sensing
 
 - [A Channel-Triggered Backdoor Attack on Wireless Semantic Image Reconstruction](https://doi.org/10.1109/tmc.2026.3676425). Wan et al., IEEE TMC, 2026. `CT-BA · trigger: natural, physical · recorded data`
 - [BadAMC: A Model-Agnostic Digital Backdoor Attack for Automatic Modulation Classification in Crowdsourced Platforms](https://doi.org/10.1109/ton.2026.3688147). Ahmadi et al., IEEE Transactions on Networking, 2026. `BadAMC · trigger: digital · recorded data`
-- [On the Vulnerability of Deep Automatic Modulation Classifiers to Explainable Backdoor Threats](https://arxiv.org/abs/2603.25310). Salmi et al., arXiv, 2026. `XAI-guided backdoor attack · trigger: digital · simulation`
+- [On the Vulnerability of Deep Automatic Modulation Classifiers to Explainable Backdoor Threats](https://arxiv.org/abs/2603.25310). Salmi et al., IEEE CCNC 2026, 2026. `XAI-guided backdoor attack · trigger: digital · simulation`
 - [Over-the-Air Backdoor Injection in Deep Learning-Based Semantic Communication Systems](https://doi.org/10.1109/icccn69946.2026.11662945). Zhou et al., ICCCN 2026, 2026. `OABI · trigger: physical · simulation`
 - [Position-Robust Backdoor Threats Against Domain-Generalized Specific Emitter Identification](https://doi.org/10.1109/ccai69603.2026.11642040). Gan et al., CCAI 2026, 2026. `trigger: digital · recorded data`
-- [Wireless Backdoor Attack and Defense for Semantic Communications over Multiple Access Channel](https://arxiv.org/abs/2606.30595). Sagduyu et al., arXiv, 2026. `Selective over-the-air backdoor attack · trigger: physical · recorded data`
+- [Wireless Backdoor Attack and Defense for Semantic Communications over Multiple Access Channel](https://arxiv.org/abs/2606.30595). Sagduyu et al., arXiv preprint, 2026. `Selective over-the-air backdoor attack · trigger: physical · recorded data`
 - [A Multitarget Backdoor Attack Against Automatic Modulation Recognition for IoT Wireless Signals](https://doi.org/10.1109/jiot.2025.3563204). Gan et al., IEEE Internet of Things Journal, 2025. `SMBA · trigger: digital · recorded data`
 - [Explanation-Guided Backdoor Attacks Against Model-Agnostic RF Fingerprinting Systems](https://doi.org/10.1109/tmc.2024.3487967). Zhao et al., IEEE TMC, 2025. `trigger: digital · recorded data`
 - [On the Invisible Backdoor Attacks on Peer-to-Peer Semantic Vehicular Networks](https://doi.org/10.1049/ell2.70431). Yuanhang He et al., Electronics Letters, 2025. `IBPS · trigger: digital · simulation`
@@ -137,14 +139,14 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [Acoustic backdoor attacks on speech recognition via frequency offset perturbation](https://doi.org/10.1016/j.asoc.2025.113188). Tang et al., Applied Soft Computing, 2025. `trigger: digital · recorded data`
 - [CBA: Backdoor Attack on Deep Speech Classification via Audio Compression](https://doi.org/10.21437/interspeech.2025-372). Huang et al., Interspeech 2025, 2025. `CBA · trigger: digital · recorded data`
 - [CuckooAttack: Towards Practical Backdoor Attack against Automatic Speech Recognition Systems](https://doi.org/10.1109/tdsc.2025.3548611). Li et al., IEEE TDSC, 2025. `CuckooAttack · trigger: digital, physical · real system`
-- [Hidden in the Noise: Unveiling Backdoors in Audio LLMs Alignment through Latent Acoustic Pattern Triggers](https://arxiv.org/abs/2508.02175). Lin et al., arXiv, 2025. `HIN · trigger: digital · simulation`
+- [Hidden in the Noise: Unveiling Backdoors in Audio LLMs Alignment through Latent Acoustic Pattern Triggers](https://arxiv.org/abs/2508.02175). Lin et al., AAAI 2026, 2025. `HIN · trigger: digital · simulation`
 - [Multi-Target Backdoor Attacks Against Speaker Recognition](https://arxiv.org/abs/2508.08559). Fortier et al., IEEE ASRU 2025, 2025. `trigger: digital · recorded data`
 - [SPBA: Utilizing Speech Large Language Model for Backdoor Attacks on Speech Classification Models](https://arxiv.org/abs/2506.08346). Yao et al., IJCNN 2025, 2025. `SPBA · trigger: digital · recorded data`
 - [Devil in the Room: Triggering Audio Backdoors in the Physical World](https://www.usenix.org/conference/usenixsecurity24/presentation/chen-meng). Chen et al., USENIX Security 2024, 2024. `TrojanRoom · trigger: natural · real system`
-- [EmoAttack: Utilizing Emotional Voice Conversion for Speech Backdoor Attacks on Deep Speech Classification Models](https://arxiv.org/abs/2408.15508). Yao et al., arXiv, 2024. `EmoAttack · trigger: digital · recorded data`
+- [EmoAttack: Utilizing Emotional Voice Conversion for Speech Backdoor Attacks on Deep Speech Classification Models](https://arxiv.org/abs/2408.15508). Yao et al., arXiv preprint, 2024. `EmoAttack · trigger: digital · recorded data`
 - [Enrollment-stage Backdoor Attacks on Speaker Recognition Systems via Adversarial Ultrasound](https://doi.org/10.1109/jiot.2023.3328253). Li et al., IEEE Internet of Things Journal, 2024. `TUNER · trigger: physical · real system`
 - [FlowMur: A Stealthy and Practical Audio Backdoor Attack with Limited Knowledge](https://doi.org/10.1109/sp54263.2024.00148). Lan et al., IEEE S&P 2024, 2024. `FlowMur · trigger: digital, physical · real system`
-- [Hidden in Plain Sound: Environmental Backdoor Poisoning Attacks on Whisper, and Mitigations](https://arxiv.org/abs/2409.12553). Bartolini et al., arXiv, 2024. `trigger: digital · recorded data`
+- [Hidden in Plain Sound: Environmental Backdoor Poisoning Attacks on Whisper, and Mitigations](https://arxiv.org/abs/2409.12553). Bartolini et al., arXiv preprint, 2024. `trigger: digital · recorded data`
 - [Inaudible Backdoor Attack via Stealthy Frequency Trigger Injection in Audio Spectrogram](https://doi.org/10.1145/3636534.3649345). Zhang et al., ACM MobiCom 2024, 2024. `trigger: digital, physical · real system`
 - [Toward Stealthy Backdoor Attacks Against Speech Recognition via Elements of Sound](https://doi.org/10.1109/tifs.2024.3404885). Cai et al., IEEE TIFS, 2024. `PBSM;VSVC · trigger: digital, physical · real system`
 - [Fake the Real: Backdoor Attack on Deep Speech Classification via Voice Conversion](https://doi.org/10.21437/interspeech.2023-733). Ye et al., INTERSPEECH 2023, 2023. `trigger: digital · recorded data`
@@ -154,16 +156,14 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [The Silent Manipulator: A Practical and Inaudible Backdoor Attack against Speech Recognition Systems](https://doi.org/10.1145/3581783.3613843). Zheng et al., ACM MM 2023, 2023. `SMA · trigger: physical · real system`
 - [Audio-domain Position-independent Backdoor Attack via Unnoticeable Triggers](https://doi.org/10.1145/3495243.3560531). Shi et al., ACM MobiCom 2022, 2022. `trigger: digital, physical · real system`
 - [Opportunistic Backdoor Attacks: Exploring Human-imperceptible Vulnerabilities on Speech Recognition Systems](https://doi.org/10.1145/3503161.3548261). Liu et al., ACM MM 2022, 2022. `DABA · trigger: natural · physical trigger`
-- [PBSM: Backdoor attack against Keyword spotting based on pitch boosting and sound masking](https://arxiv.org/abs/2211.08697). Cai et al., arXiv, 2022. `PBSM · trigger: digital · recorded data`
 - [UltraBD: Backdoor Attack against Automatic Speaker Verification Systems via Adversarial Ultrasound](https://doi.org/10.1109/icpads56603.2022.00033). Ze et al., IEEE ICPADS 2022, 2022. `UltraBD · trigger: physical · real system`
-- [VSVC: Backdoor attack against Keyword Spotting based on Voiceprint Selection and Voice Conversion](https://arxiv.org/abs/2212.10103). Cai et al., arXiv, 2022. `VSVC · trigger: digital · recorded data`
 - [Backdoor Attack against Speaker Verification](https://doi.org/10.1109/icassp39728.2021.9413468). Zhai et al., ICASSP 2021, 2021. `trigger: digital · recorded data`
-- [Can You Hear It? Backdoor Attacks via Ultrasonic Triggers](https://arxiv.org/abs/2107.14569). Koffas et al., arXiv, 2021. `trigger: digital, physical · real system`
+- [Can You Hear It? Backdoor Attacks via Ultrasonic Triggers](https://arxiv.org/abs/2107.14569). Koffas et al., ACM WiseML 2022, 2021. `trigger: digital, physical · real system`
 
 ### Wearable and time series
 
-- [Backdoor Attacks on Fault Detection and Localization in Cyber-Physical Systems](https://arxiv.org/abs/2605.27674). Jean et al., arXiv, 2026. `trigger: digital · simulation`
-- [CLIP-guided Diffusion Model for Backdoor Generation in Sensor-based Human Activity Recognition](https://arxiv.org/abs/2606.22837). Briston et al., arXiv, 2026. `IMU-DM-CLIP · trigger: digital · recorded data`
+- [Backdoor Attacks on Fault Detection and Localization in Cyber-Physical Systems](https://arxiv.org/abs/2605.27674). Jean et al., arXiv preprint, 2026. `trigger: digital · simulation`
+- [CLIP-guided Diffusion Model for Backdoor Generation in Sensor-based Human Activity Recognition](https://arxiv.org/abs/2606.22837). Briston et al., arXiv preprint, 2026. `IMU-DM-CLIP · trigger: digital · recorded data`
 - [Synchronization-Free Backdoor Attacks on Edge-Deployed Neural Network for IoT Systems](https://doi.org/10.1109/tc.2026.3699817). Bing Zhang et al., IEEE TC, 2026. `trigger: digital · recorded data`
 - [Revisiting Backdoor Attacks on Time Series Classification in the Frequency Domain](https://doi.org/10.1145/3696410.3714827). Huang et al., WWW 2025, 2025. `FreqBack · trigger: digital · recorded data`
 - [Spatialspectral-Backdoor: Realizing backdoor attack for deep neural networks in brain-computer interface via EEG characteristics](https://doi.org/10.1016/j.neucom.2024.128902). Li et al., Neurocomputing, 2025. `Spatialspectral-Backdoor · trigger: digital · recorded data`
@@ -171,7 +171,7 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [BackTime: Backdoor Attacks on Multivariate Time Series Forecasting](https://doi.org/10.52202/079017-4174). Lin et al., NeurIPS 2024, 2024. `BackTime · trigger: digital · recorded data`
 - [Dynamic Black-box Backdoor Attacks on IoT Sensory Data](https://doi.org/10.1109/tps-isa62245.2024.00030). Chathoth et al., IEEE TPS-ISA 2024, 2024. `trigger: digital · recorded data`
 - [Position-Independent and Stealthy Backdoor Attack of IMU Systems](https://doi.org/10.1109/globecom52923.2024.10901755). Chen et al., IEEE GLOBECOM 2024, 2024. `trigger: digital · recorded data`
-- [Professor X: Manipulating EEG BCI with Invisible and Robust Backdoor Attack](https://arxiv.org/abs/2409.20158). Liu et al., arXiv, 2024. `Professor X · trigger: digital · recorded data`
+- [Professor X: Manipulating EEG BCI with Invisible and Robust Backdoor Attack](https://arxiv.org/abs/2409.20158). Liu et al., arXiv preprint, 2024. `Professor X · trigger: digital · recorded data`
 - [Repetitive Backdoor Attacks and Countermeasures for Smart Grid Reinforcement Incremental Learning](https://doi.org/10.1109/jiot.2024.3476458). El-Toukhy et al., IEEE Internet of Things Journal, 2024. `trigger: digital · recorded data`
 - [Backdoor Attacks on Time Series: A Generative Approach](https://doi.org/10.1109/satml54575.2023.00034). Jiang et al., IEEE SaTML 2023, 2023. `TSBA · trigger: digital · recorded data`
 - [EEG-Based Brain-Computer Interfaces Are Vulnerable to Backdoor Attacks](https://doi.org/10.1109/tnsre.2023.3273214). Meng et al., IEEE TNSRE, 2023. `NPP backdoor · trigger: digital · recorded data`
@@ -181,19 +181,19 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 ### Decentralized learning
 
-- [Targeted Attacks and Defenses for Distributed Federated Learning in Vehicular Networks](https://arxiv.org/abs/2510.15109). Demir et al., arXiv, 2025. `trigger: digital · simulation`
+- [Targeted Attacks and Defenses for Distributed Federated Learning in Vehicular Networks](https://arxiv.org/abs/2510.15109). Demir et al., IEEE MILCOM 2025, 2025. `trigger: digital · simulation`
 
 ### Federated learning
 
 - [Applying Patch-Based Backdoor Attacks to In-Orbit Federated Learning for Satellite Constellations](https://doi.org/10.1109/aero66936.2026.11519919). Rahmanian et al., IEEE Aerospace Conference 2026, 2026. `trigger: digital · recorded data`
 - [Context-Aware Dynamic-Trigger Backdoor Attack in Federated Industrial Intrusion Detection Systems](https://doi.org/10.1109/tii.2026.3712476). Bhutta et al., IEEE TII, 2026. `CDB · trigger: digital · recorded data`
 - [Exploiting Layer-Specific Vulnerabilities to Backdoor Attack in Federated Learning](https://arxiv.org/abs/2602.15161). Foroughi et al., IEEE ICC 2026, 2026. `Layer Smoothing Attack · trigger: digital · recorded data`
-- [STAIN-FL: Stealthy Targeted Attack Injection with Contextual Triggers in Federated Learning](https://arxiv.org/abs/2608.23952). arXiv, 2026. `STAIN-FL · trigger: natural · physical trigger`
+- [STAIN-FL: Stealthy Targeted Attack Injection with Contextual Triggers in Federated Learning](https://arxiv.org/abs/2608.23952). arXiv preprint, 2026. `STAIN-FL · trigger: natural · physical trigger`
 - [BadHAR: Backdoor Attacks in Federated Human Activity Recognition Systems](https://doi.org/10.1007/978-981-96-1148-5_1). Dongping Zhang et al., Springer LNCS, 2025. `BadHAR · trigger: digital · recorded data`
 - [LBKD: Rethinking Federated Backdoors for Low-Altitude Economy via LLMs and Bidirectional Knowledge Distillation](https://doi.org/10.1109/tnse.2025.3626056). Wang et al., IEEE Transactions on Network Science and Engineering, 2025. `LBKD · trigger: digital · recorded data`
 - [On the Out-of-Distribution Backdoor Attack for Federated Learning](https://arxiv.org/abs/2509.13219). Xu et al., MobiHoc 2025, 2025. `OBA / SoDa · trigger: natural · recorded data`
 - [Spikewhisper: Temporal Spike Backdoor Attacks on Federated Neuromorphic Learning over Low-power Devices](https://doi.org/10.1007/978-981-96-7005-5_17). Fu et al., Springer CCIS, 2025. `Spikewhisper · trigger: digital · recorded data`
-- [Act in Collusion: Distributed Multi-Target Backdoor Attacks in Federated Learning](https://arxiv.org/abs/2411.03926). Liu et al., arXiv, 2024. `DMBA · trigger: digital · recorded data`
+- [Act in Collusion: Distributed Multi-Target Backdoor Attacks in Federated Learning](https://arxiv.org/abs/2411.03926). Liu et al., IEEE Internet of Things Journal 2026, 2024. `DMBA · trigger: digital · recorded data`
 - [Backdoor Attack and Defense in Asynchronous Federated Learning for Multiple Unmanned Vehicles](https://doi.org/10.1109/fasta61401.2024.10595233). Wang et al., FASTA 2024, 2024. `OAMU · trigger: digital · simulation`
 - [Collusive Backdoor Attacks in Federated Learning Frameworks for IoT Systems](https://doi.org/10.1109/jiot.2024.3368754). Alharbi et al., IEEE Internet of Things Journal, 2024. `CBA · trigger: digital · recorded data`
 - [Covert and Persistent Backdoor Attacks in Federated Learning-Powerd Autonomous Driving](https://doi.org/10.1109/hpcc64274.2024.00114). Wang et al., IEEE HPCC/SmartCity/DSS 2024, 2024. `CPBA · trigger: digital · recorded data`
@@ -219,7 +219,7 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [Cooperative Decentralized Backdoor Attacks on Vertical Federated Learning](https://doi.org/10.1109/ton.2025.3636809). Lee et al., IEEE Transactions on Networking, 2025. `trigger: digital · recorded data`
 - [IBAS: Imperceptible Backdoor Attacks in Split Learning with Limited Information](https://doi.org/10.1609/aaai.v39i26.34986). Peng et al., AAAI 2025, 2025. `IBAS · trigger: digital · recorded data`
 - [BadVFL: Backdoor Attacks in Vertical Federated Learning](https://doi.org/10.1109/sp54263.2024.00008). Naseri et al., IEEE S&P 2024, 2024. `BadVFL · trigger: digital · recorded data`
-- [Dullahan: Stealthy Backdoor Attack against Without-Label-Sharing Split Learning](https://arxiv.org/abs/2405.12751). Pu et al., arXiv, 2024. `Dullahan · trigger: digital · recorded data`
+- [Dullahan: Stealthy Backdoor Attack against Without-Label-Sharing Split Learning](https://arxiv.org/abs/2405.12751). Pu et al., arXiv preprint, 2024. `Dullahan · trigger: digital · recorded data`
 - [Backdoor Attack Against Split Neural Network-Based Vertical Federated Learning](https://doi.org/10.1109/tifs.2023.3327853). He et al., IEEE TIFS, 2023. `trigger: digital · recorded data`
 - [How to backdoor split learning](https://doi.org/10.1016/j.neunet.2023.09.037). Yu et al., Neural Networks, 2023. `trigger: digital · recorded data`
 - [On Feasibility of Server-side Backdoor Attacks on Split Learning](https://doi.org/10.1109/spw59333.2023.00014). Tajalli et al., IEEE S&P Workshops 2023, 2023. `trigger: digital · recorded data`
@@ -228,8 +228,8 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 ### Unlearning and continual updates
 
-- [Backdoor Attacks on Contrastive Continual Learning for IoT Systems](https://arxiv.org/abs/2602.13062). Tim et al., arXiv, 2026. `trigger: digital`
-- [Continual Backdoor Training in IoT/CPS](https://arxiv.org/abs/2606.14987). Salish et al., arXiv, 2026. `trigger: digital · recorded data`
+- [Backdoor Attacks on Contrastive Continual Learning for IoT Systems](https://arxiv.org/abs/2602.13062). Tim et al., arXiv preprint, 2026. `trigger: digital`
+- [Continual Backdoor Training in IoT/CPS](https://arxiv.org/abs/2606.14987). Salish et al., arXiv preprint, 2026. `trigger: digital · recorded data`
 - [Exploiting the Recovery Trap of Federated Unlearning for Latent and Persistent Backdoors in Edge Systems](https://doi.org/10.1109/tce.2026.3735776). Chen et al., IEEE Transactions on Consumer Electronics, 2026. `LURA · trigger: digital · recorded data`
 
 ## Model supply chain attacks
@@ -258,7 +258,7 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [Backdooring Acoustic Foundation Models for Physically Realizable Triggers](https://doi.org/10.1007/978-3-032-42939-1_15). Zebin Yun et al., RAID 2026 (LNCS), 2026. `FAB · trigger: physical · real system`
 - [Data-free Backdoor Attacks on Pre-trained Human Activity Sensing Models in IoT Systems](https://doi.org/10.1109/tmc.2026.3745275). Zhao et al., IEEE TMC, 2026. `Data-free PTM backdoor · trigger: digital · recorded data`
 - [Delayed Backdoor: Let the Trigger Fly for a While in Backdoor Attack on Internet of Things](https://doi.org/10.1109/jiot.2026.3686078). Bo Liu et al., IEEE IoT-J, 2026. `Delayed Backdoor · trigger: digital · recorded data`
-- [From Prompt to Physical Action: Structured Backdoor Attacks on LLM-Mediated Robotic Control Systems](https://arxiv.org/abs/2604.03890). Mingyang Xie et al., preprint (arXiv), 2026. `trigger: digital · real system`
+- [From Prompt to Physical Action: Structured Backdoor Attacks on LLM-Mediated Robotic Control Systems](https://arxiv.org/abs/2604.03890). Mingyang Xie et al., arXiv preprint, 2026. `trigger: digital · real system`
 - [Hardware-Triggered Backdoors](https://arxiv.org/abs/2601.21902). Jonas Möller et al., arXiv preprint, 2026. `Hardware-Triggered Backdoors · trigger: natural, processing or fault · real system`
 - [Over-the-Air Backdoor Threats Against Pre-Trained Models for Automatic Modulation Recognition](https://doi.org/10.1109/tccn.2026.3692196). Gan et al., IEEE TCCN, 2026. `CDBA · trigger: digital, physical · real system`
 - [TrojanEdge: Mutual Information-Enhanced Robust and Persistent Backdoor Attacks for Edge and On-Device Deployments](https://doi.org/10.1109/infocom59046.2026.11571574). Zemin Chen et al., IEEE INFOCOM 2026, 2026. `TrojanEdge · trigger: digital · recorded data`
@@ -268,8 +268,8 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [Can We Trust Embodied Agents? Exploring Backdoor Attacks against Embodied LLM-based Decision-Making Systems](https://arxiv.org/abs/2405.20774). Ruochen Jiao et al., ICLR 2025, 2025. `BALD · trigger: digital, physical · simulation`
 - [Hidden Ghost Hand: Unveiling Backdoor Vulnerabilities in MLLM-Powered Mobile GUI Agents](https://doi.org/10.18653/v1/2025.findings-emnlp.411). Pengzhou Cheng et al., Findings of EMNLP 2025, 2025. `AgentGhost · trigger: digital · recorded data`
 - [Protocol-agnostic and Data-free Backdoor Attacks on Pre-trained Models in RF Fingerprinting](https://doi.org/10.1109/infocom55648.2025.11044704). Tianya Zhao et al., IEEE INFOCOM 2025, 2025. `trigger: digital · recorded data`
-- [Compromising Embodied Agents with Contextual Backdoor Attacks](https://arxiv.org/abs/2408.02882). Aishan Liu et al., preprint (arXiv), 2024. `Contextual Backdoor Attack · trigger: digital, physical · real system`
-- [Robot Collapse: Supply Chain Backdoor Attacks Against VLM-based Robotic Manipulation](https://arxiv.org/abs/2411.11683). Xianlong Wang et al., preprint (arXiv), 2024. `TrojanRobot · trigger: physical · real system`
+- [Compromising Embodied Agents with Contextual Backdoor Attacks](https://arxiv.org/abs/2408.02882). Aishan Liu et al., IEEE TIFS 2025, 2024. `Contextual Backdoor Attack · trigger: digital, physical · real system`
+- [Robot Collapse: Supply Chain Backdoor Attacks Against VLM-based Robotic Manipulation](https://arxiv.org/abs/2411.11683). Xianlong Wang et al., arXiv preprint, 2024. `TrojanRobot · trigger: physical · real system`
 - [Architectural Backdoors in Neural Networks](https://doi.org/10.1109/CVPR52729.2023.02356). Mikel Bober-Irizar et al., CVPR 2023, 2023. `MAB · trigger: digital · recorded data`
 - [Anti-Distillation Backdoor Attacks: Backdoors Can Really Survive in Knowledge Distillation](https://doi.org/10.1145/3474085.3475254). Yunjie Ge et al., ACM MM 2021, 2021. `ADBA · trigger: digital · recorded data`
 
@@ -289,7 +289,7 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 - [HAMLOCK: HArdware-Model LOgically Combined attacK](https://arxiv.org/abs/2510.19145). Sanskar Amgain et al., USENIX Security 2026, 2026. `HAMLOCK · trigger: digital, processing or fault · recorded data`
 - [Triggering Stealthy Feature Map Backdoors via Physical Fault Injection in Embedded Neural Networks](https://arxiv.org/abs/2607.09473). Steyn Hommes et al., arXiv preprint, 2026. `LATCH · trigger: processing or fault · real system`
-- [Input-Triggered Hardware Trojan Attack on Spiking Neural Networks](https://arxiv.org/abs/2503.21793). Spyridon Raptis et al., arXiv preprint, 2025. `Input-triggered SNN hardware Trojan · trigger: digital, processing or fault · real system`
+- [Input-Triggered Hardware Trojan Attack on Spiking Neural Networks](https://arxiv.org/abs/2503.21793). Spyridon Raptis et al., IEEE HOST 2025, 2025. `Input-triggered SNN hardware Trojan · trigger: digital, processing or fault · real system`
 - [DeepBaR: Fault Backdoor Attack on Deep Neural Network Layers](https://arxiv.org/abs/2407.21220). C. A. Martínez-Mejía et al., arXiv preprint, 2024. `DeepBaR · trigger: digital · recorded data`
 - [Evil from Within: Machine Learning Backdoors Through Dormant Hardware Trojans](https://doi.org/10.1109/ACSAC63791.2024.00077). Alexander Warnecke et al., ACSAC 2024, 2024. `Evil from Within · trigger: digital · real system`
 - [Backdoor Attack on Deep Neural Networks Triggered by Fault Injection Attack on Image Sensor Interface](https://doi.org/10.3390/s23104742). Tatsuya Oyama et al., Sensors (MDPI), 2023. `MIPI fault-injection-triggered backdoor · trigger: processing or fault · real system`
@@ -314,32 +314,32 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 - [EvoACC-BD-MIDS: Evolutionary Activation Clustering Combination-Based Backdoor Defense for Multi-Class Intrusion Detection Systems in Smart Grids](https://doi.org/10.1109/tifs.2026.3744644). Rong Wang et al., IEEE TIFS, 2026. `EvoACC-BD-MIDS · trigger: digital · recorded data`
 - [Backdozer: A Backdoor Detection Methodology for DRL-based Traffic Controllers](https://doi.org/10.1145/3639828). Yue Wang et al., ACM Journal on Autonomous Transportation Systems, 2024. `Backdozer · trigger: digital · simulation`
-- [Model-agnostic clean-label backdoor mitigation in cybersecurity environments](https://arxiv.org/abs/2407.08159). Severi et al., arXiv, 2024. `trigger: digital · recorded data`
-- [Try to Avoid Attacks: A Federated Data Sanitization Defense for Healthcare IoMT Systems](https://arxiv.org/abs/2211.01592). arXiv, 2022. `Federated Data Sanitization Defense · trigger: digital · recorded data`
+- [Model-agnostic clean-label backdoor mitigation in cybersecurity environments](https://arxiv.org/abs/2407.08159). Severi et al., IEEE MILCOM 2025, 2024. `trigger: digital · recorded data`
+- [Try to Avoid Attacks: A Federated Data Sanitization Defense for Healthcare IoMT Systems](https://arxiv.org/abs/2211.01592). arXiv preprint, 2022. `Federated Data Sanitization Defense · trigger: digital · recorded data`
 
 ## Training-level defenses
 
 - [Cert-ADD: Certified Adaptive Directional Defense Against Backdoor Attacks in Smart Homes Vision](https://doi.org/10.1109/jiot.2026.3696003). Ting Qiao et al., IEEE IoT-J, 2026. `Cert-ADD · trigger: digital · recorded data`
 - [Defending Backdoor Attacks in Task-Oriented Multi-User Semantic Communication: A Contrastive Training Approach (Reject-BD)](https://doi.org/10.1109/tnse.2026.3666663). Jincheng Peng et al., IEEE TNSE, 2026. `Reject-BD · trigger: digital · recorded data`
-- [Detecting and Mitigating Backdoor Attacks in OTA-FL Systems: A Two-Stage Robust Aggregation Scheme](https://arxiv.org/abs/2605.19253). Ma et al., arXiv, 2026. `TTI · trigger: digital · recorded data`
+- [Detecting and Mitigating Backdoor Attacks in OTA-FL Systems: A Two-Stage Robust Aggregation Scheme](https://arxiv.org/abs/2605.19253). Ma et al., arXiv preprint, 2026. `TTI · trigger: digital · recorded data`
 - [ECS-Guard: Online Logit-Geometry Monitoring for Backdoor Defense in Split Learning](https://doi.org/10.1109/icce70609.2026.11658438). Ma Viet Duc et al., ICCE 2026, 2026. `ECS-Guard · trigger: digital, natural · real system`
 - [FedMCLA: Multi-Cluster Label-Shift-Aware Backdoor Defense for Heterogeneous IoT Federations](https://doi.org/10.1109/jiot.2026.3733041). Xiaoyu Zhang et al., IEEE IoT-J, 2026. `FedMCLA · trigger: digital · recorded data`
 - [FedQmc: A Federated Learning Backdoor Defense Method Based on Quantum State Encoding and Multiscale Aggregation in Industrial Internet of Things](https://doi.org/10.1109/jiot.2026.3653444). Y. A. Tang et al., IEEE IoT-J, 2026. `FedQmc · trigger: digital · recorded data`
 - [FedULBD: Unlearning-Driven Lightweight Backdoor Defense for Resource-Constrained Consumer Electronics Federated Learning](https://doi.org/10.1109/tce.2026.3709974). Junyan Hu et al., IEEE TCE, 2026. `FedULBD · trigger: digital · recorded data`
 - [PEFL: A Privacy-Enhanced Federated Learning Framework for Mobile Edge CrowdSensing in the Presence of Collusion and Backdoor Attacks](https://doi.org/10.1109/tmc.2026.3656307). Mengyao Chen et al., IEEE TMC, 2026. `PEFL · trigger: digital · recorded data`
 - [QuantDoor: A Quantum Randomized AoI Aware Learning Framework for defense against Backdoor Attacks in Wireless Channels](https://doi.org/10.1145/3748522.3779883). Nishat Mahdiya Khan et al., ACM SAC 2026, 2026. `QuantDoor · trigger: digital · recorded data`
-- [Receiver-Domain Behavioral Probing for Backdoor-Resilient Federated GPS Spoofing Detection in UAV Networks](https://doi.org/10.48550/arxiv.2610.10360). Will Jedrzejczak et al., arXiv, 2026. `Receiver-domain behavioral probing · trigger: digital · recorded data`
+- [Receiver-Domain Behavioral Probing for Backdoor-Resilient Federated GPS Spoofing Detection in UAV Networks](https://doi.org/10.48550/arxiv.2610.10360). Will Jedrzejczak et al., arXiv preprint, 2026. `Receiver-domain behavioral probing · trigger: digital · recorded data`
 - [SecureSplit: Mitigating Backdoor Attacks in Split Learning](https://doi.org/10.1145/3774904.3792484). Zhihao Dou et al., WWW 2026, 2026. `SecureSplit · trigger: digital · recorded data`
 - [Sign-Only Federated Compressive Learning with Dual-View Trust Filtering against Backdoor Attacks (SFCLDT)](https://doi.org/10.1109/jiot.2026.3736542). Maolan Zhang et al., IEEE IoT-J, 2026. `SFCLDT · trigger: digital · recorded data`
 - [Spectrum-Based Backdoor Defense for Federated Learning in Consumer Electronics](https://doi.org/10.1109/mce.2026.3708163). Jun Cheng et al., IEEE Consumer Electronics Magazine, 2026. `SpecGuard · trigger: digital · recorded data`
-- [TASER: Task-Aware Spectral Energy Refine for Backdoor Suppression in UAV Swarms Decentralized Federated Learning](https://doi.org/10.48550/arxiv.2603.10075). Sizhe Huang et al., arXiv, 2026. `TASER · trigger: digital, natural · recorded data`
-- [TimeGuard: Channel-wise Pool Training for Backdoor Defense in Time Series Forecasting](https://doi.org/10.48550/arxiv.2605.22365). Quang Duc Nguyen et al., arXiv, 2026. `TimeGuard · trigger: digital · recorded data`
+- [TASER: Task-Aware Spectral Energy Refine for Backdoor Suppression in UAV Swarms Decentralized Federated Learning](https://doi.org/10.48550/arxiv.2603.10075). Sizhe Huang et al., arXiv preprint, 2026. `TASER · trigger: digital, natural · recorded data`
+- [TimeGuard: Channel-wise Pool Training for Backdoor Defense in Time Series Forecasting](https://doi.org/10.48550/arxiv.2605.22365). Quang Duc Nguyen et al., arXiv preprint, 2026. `TimeGuard · trigger: digital · recorded data`
 - [Backdoor-Aware Adaptive Aggregation for Wireless Ad Hoc Federated Learning](https://doi.org/10.1109/tps-isa67132.2025.00083). Atsuya Muramatsu et al., IEEE TPS-ISA 2025, 2025. `WAFL-BAA · trigger: digital · recorded data`
 - [DPCTS: Dual-Perspective Cross-Client Trust Scoring for Robust Backdoor Defense of Federated Learning Over 6G Networks](https://doi.org/10.1109/tnse.2025.3645850). Yaohua Luo et al., IEEE TNSE, 2025. `DPCTS · trigger: digital · recorded data`
-- [Defending the Edge: Representative-Attention Defense against Backdoor Attacks in Federated Learning (FeRA)](https://doi.org/10.48550/arxiv.2505.10297). Chibueze Peace Obioma et al., arXiv, 2025. `FeRA · trigger: digital, natural · recorded data`
+- [Defending the Edge: Representative-Attention Defense against Backdoor Attacks in Federated Learning (FeRA)](https://doi.org/10.48550/arxiv.2505.10297). Chibueze Peace Obioma et al., arXiv preprint, 2025. `FeRA · trigger: digital, natural · recorded data`
 - [EarlyExodus: Leveraging early exits to mitigate backdoor vulnerability in deep learning](https://doi.org/10.1016/j.rineng.2025.106404). Salmane Douch et al., Results in Engineering, 2025. `EarlyExodus · trigger: digital · recorded data`
 - [Eliminating Stealthy Backdoors via Occupying and Withdrawing for Secure Personalized Federated Learning in UAV Swarms (PFL-OW)](https://doi.org/10.1109/tccn.2025.3627915). Bo Wang et al., IEEE TCCN, 2025. `PFL-OW · trigger: digital · recorded data`
-- [Krum Federated Chain (KFC): Using blockchain to defend against adversarial attacks in Federated Learning](https://arxiv.org/abs/2502.06917). arXiv, 2025. `Krum Federated Chain · trigger: digital · recorded data`
+- [Krum Federated Chain (KFC): Using blockchain to defend against adversarial attacks in Federated Learning](https://arxiv.org/abs/2502.06917). arXiv preprint, 2025. `Krum Federated Chain · trigger: digital · recorded data`
 - [MoCC-BD-FID: Multi-Objective Clustering Combination-Based Backdoor Defense for Federated Intrusion Detection of Industrial Control Systems](https://doi.org/10.1109/tifs.2025.3586479). Guo-Qiang Zeng et al., IEEE TIFS, 2025. `MoCC-BD-FID · trigger: digital · recorded data`
 - [RDCBA-FEL: Robust Defense Against Colluded Backdoor Attacks in Federated Edge Learning](https://doi.org/10.1109/tifs.2025.3629550). Pan Zhang et al., IEEE TIFS, 2025. `RDCBA-FEL · trigger: digital · recorded data`
 - [SafeSplit: A Novel Defense Against Client-Side Backdoor Attacks in Split Learning](https://doi.org/10.14722/ndss.2025.241698). Phillip Rieger et al., NDSS 2025, 2025. `SafeSplit · trigger: digital, natural · recorded data`
@@ -357,9 +357,9 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [PerVK: A Robust Personalized Federated Framework to Defend Against Backdoor Attacks for IoT Applications](https://doi.org/10.1109/tii.2023.3329688). Yongkang Wang et al., IEEE TII, 2023. `PerVK · trigger: digital · recorded data`
 - [Two-phase Defense Against Poisoning Attacks on Federated Learning-based Intrusion Detection (DPA-FL)](https://doi.org/10.1016/j.cose.2023.103205). Yuan-Cheng Lai et al., Computers & Security, 2023. `DPA-FL · trigger: digital · recorded data`
 - [A Federated Learning Backdoor Attack Defense Method Based on Dual Attention Mechanism (FDDAM)](https://doi.org/10.1109/bigdataservice55688.2022.00030). Jin Yan et al., IEEE BigDataService 2022, 2022. `FDDAM · trigger: digital · recorded data`
-- [A Secure Federated Learning Framework for Residential Short Term Load Forecasting](https://arxiv.org/abs/2209.14547). arXiv, 2022. `trigger: digital · recorded data`
+- [A Secure Federated Learning Framework for Residential Short Term Load Forecasting](https://arxiv.org/abs/2209.14547). IEEE Transactions on Smart Grid 2024, 2022. `trigger: digital · recorded data`
 - [DeepSight: Mitigating Backdoor Attacks in Federated Learning Through Deep Model Inspection](https://arxiv.org/abs/2201.00763). Phillip Rieger et al., NDSS 2022, 2022. `DeepSight · trigger: digital, natural · recorded data`
-- [FLAME: Taming Backdoors in Federated Learning](https://arxiv.org/abs/2101.02281). Thien Duc Nguyen et al., arXiv, 2022. `FLAME · trigger: digital · recorded data`
+- [FLAME: Taming Backdoors in Federated Learning](https://arxiv.org/abs/2101.02281). Thien Duc Nguyen et al., USENIX Security 2022, 2022. `FLAME · trigger: digital · recorded data`
 - [Robust Federated Learning for Ubiquitous Computing through Mitigation of Edge-Case Backdoor Attacks (ARMOR)](https://doi.org/10.1145/3569492). Fatima Elhattab et al., ACM IMWUT, 2022. `ARMOR · trigger: natural · recorded data`
 - [FLTrust: Byzantine-robust Federated Learning via Trust Bootstrapping](https://arxiv.org/abs/2012.13995). Xiaoyu Cao et al., NDSS 2021, 2021. `FLTrust · trigger: digital · recorded data`
 - [Stability-Based Analysis and Defense against Backdoor Attacks on Edge Computing Services](https://doi.org/10.1109/mnet.011.2000265). Yi Zhao et al., IEEE Network, 2021. `Stability-based defense · trigger: digital · recorded data`
@@ -368,11 +368,11 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 - [Compile-Time Backdoor Neutralization via LLM-Guided Localized Edits](https://doi.org/10.1109/TIFS.2026.3753307). Minghui Li et al., IEEE TIFS, 2026. `CBN · trigger: processing or fault · recorded data`
 - [Data Distillation Boundary Decision for Modulation Recognition Backdoor Attack Detection](https://doi.org/10.1109/ccsb71176.2026.11716451). Tao Jiang et al., CCSB 2026, 2026. `trigger: digital · simulation`
-- [Detecting and Eliminating Neural Network Backdoors Through Active Paths with Application to Intrusion Detection](https://doi.org/10.48550/arxiv.2603.10641). Eirik Høyheim et al., arXiv, 2026. `trigger: digital · recorded data`
+- [Detecting and Eliminating Neural Network Backdoors Through Active Paths with Application to Intrusion Detection](https://doi.org/10.48550/arxiv.2603.10641). Eirik Høyheim et al., ICMCIS 2026, 2026. `trigger: digital · recorded data`
 - [Efficient Backdoor Mitigation in Federated Learning With Contrastive Loss](https://doi.org/10.1109/jiot.2026.3711587). H. C. Ferguson et al., IEEE IoT-J, 2026. `trigger: digital · recorded data`
 - [Fast and Effective Backdoor Removal in Federated Spiking Neural Networks via Temporal Synaptic Sanitization (FedTSR)](https://doi.org/10.3390/electronics15132904). Baoping Wang et al., Electronics, 2026. `FedTSR · trigger: digital · recorded data`
-- [FlipGuard: Defending Large Language Models Against Quantization-Conditioned Backdoor Attacks](https://arxiv.org/abs/2606.28962). Aoying Zheng et al., IEEE ICME 2026, 2026. `FlipGuard · trigger: processing or fault · recorded data`
-- [Lightweight and Fast Backdoor Model Detection (DFBScanner)](https://doi.org/10.48550/arxiv.2605.18907). Yinbo Yu et al., arXiv, 2026. `DFBScanner · trigger: digital, processing or fault · recorded data`
+- [FlipGuard: Defending Large Language Models Against Quantization-Conditioned Backdoor Attacks](https://arxiv.org/abs/2606.28962). Aoying Zheng et al., IEEE ICME 2026 (accepted), 2026. `FlipGuard · trigger: processing or fault · recorded data`
+- [Lightweight and Fast Backdoor Model Detection (DFBScanner)](https://doi.org/10.48550/arxiv.2605.18907). Yinbo Yu et al., arXiv preprint, 2026. `DFBScanner · trigger: digital, processing or fault · recorded data`
 - [PRISM-TS: A Personalized Backdoor Defense Method for Power Load Time-Series Classification](https://doi.org/10.3390/sym18111852). Yaohui Wang et al., Symmetry, 2026. `PRISM-TS · trigger: digital · recorded data`
 - [Backdoor Defense in Transportation Cyber-Physical Systems Using Frequency Domain Hybrid Distillation (FDHD)](https://doi.org/10.1109/tits.2025.3539887). Bin Hu et al., IEEE T-ITS, 2025. `FDHD · trigger: digital · recorded data`
 - [Gradient Norm-based Fine-Tuning for Backdoor Defense in Automatic Speech Recognition (GN-FT)](https://doi.org/10.1109/icassp49660.2025.10889177). Nanjun Zhou et al., ICASSP 2025, 2025. `GN-FT · trigger: digital · recorded data`
@@ -391,16 +391,15 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [Repairing Backdoor Model With Dynamic Gradient Clipping for Intelligent Vehicles (DGC)](https://doi.org/10.1109/tdsc.2024.3419040). Xindi Ma et al., IEEE TDSC, 2024. `DGC · trigger: digital · recorded data`
 - [TRGE: A Backdoor Detection After Quantization](https://doi.org/10.1007/978-981-97-0945-8_24). Renhua Xie et al., LNCS, 2024. `TRGE · trigger: digital · recorded data`
 - [Trojan Attack and Defense for Deep Learning-Based Navigation Systems of Unmanned Aerial Vehicles](https://doi.org/10.1109/access.2024.3419800). Mohammed Mynuddin et al., IEEE Access, 2024. `UAP-based Trojan detector · trigger: digital · recorded data`
-- [Aegis: Mitigating Targeted Bit-flip Attacks against Deep Neural Networks](https://arxiv.org/abs/2302.13520). Jialai Wang et al., USENIX Security 2023, 2023. `Aegis · trigger: digital, processing or fault · real system`
 - [A collaborative deep learning microservice for backdoor defenses in Industrial IoT networks (CoDefend)](https://doi.org/10.1016/j.adhoc.2021.102727). Qin Liu et al., Ad Hoc Networks, 2021. `CoDefend · trigger: digital · recorded data`
 - [Identifying Physically Realizable Triggers for Backdoored Face Recognition Networks](https://doi.org/10.1109/icip42928.2021.9506564). Ankita Raj et al., ICIP 2021, 2021. `DTD · trigger: digital · recorded data`
 
 ## Inference-level defenses
 
 - [Lightweight Inference-Time Backdoor Attack Detection for Resource-Constrained Internet of Drones using Tiny Vision Transformers](https://doi.org/10.1109/icicv68925.2026.11554865). Rahgul M S et al., ICICV 2026, 2026. `trigger: digital · recorded data`
-- [ODPure: Backdoor Purification for Object Detection via Ensemble Corruption Consensus](https://arxiv.org/abs/2609.28239). Li Zeng et al., preprint (arXiv), 2026. `ODPure · trigger: digital · recorded data`
+- [ODPure: Backdoor Purification for Object Detection via Ensemble Corruption Consensus](https://arxiv.org/abs/2609.28239). Li Zeng et al., arXiv preprint, 2026. `ODPure · trigger: digital · recorded data`
 - [Real-Time Out-of-Band Defense for Mobile Edge UAVs: A Physics-Aware Digital Twin Power Side-Channel Architecture Against Vision Backdoors](https://doi.org/10.1109/jiot.2026.3745089). Ruigang Dong et al., IEEE IoT-J, 2026. `PADT + SSP · trigger: digital · simulation`
-- [TMT: Runtime Backdoor Detection for Vision-Language-Action Policies on Unseen Tasks](https://arxiv.org/abs/2610.09462). Zirun Zhou et al., preprint (arXiv), 2026. `TMT · trigger: digital, physical · real system`
+- [TMT: Runtime Backdoor Detection for Vision-Language-Action Policies on Unseen Tasks](https://arxiv.org/abs/2610.09462). Zirun Zhou et al., arXiv preprint, 2026. `TMT · trigger: digital, physical · real system`
 - [When Attention Betrays: Erasing Backdoor Attacks in Robotic Policies by Reconstructing Visual Tokens](https://doi.org/10.1109/icra57385.2026.11695774). Xuetao Li et al., ICRA 2026, 2026. `Bera · trigger: physical · real system`
 - [Adaptive hybrid convolutional neural network-autoencoder framework for backdoor detection in GenAI-driven semantic communication systems](https://doi.org/10.52953/shzx4571). Hassan El Alami et al., ITU Journal on Future and Evolving Technologies, 2025. `CNN-AAE · trigger: digital · recorded data`
 - [Michscan: Black-Box Neural Network Integrity Checking at Runtime Through Power Analysis](https://doi.org/10.1109/HOST64725.2025.11050062). Robi Paul et al., IEEE HOST 2025, 2025. `Michscan · trigger: digital, processing or fault · real system`
@@ -409,6 +408,7 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [Detecting Backdoor Attacks in Black-Box Neural Networks through Hardware Performance Counters](https://doi.org/10.23919/date58400.2024.10546739). Manaar Alam et al., DATE 2024, 2024. `trigger: digital · real system`
 - [Novel Lightweight Method for Detecting Backdoor Attacks in Edge-Deployed Neural Networks](https://doi.org/10.1109/commnet63022.2024.10793359). Salmane Douch et al., CommNet 2024, 2024. `trigger: digital · recorded data`
 - [SpeechGuard: Online Defense against Backdoor Attacks on Speech Recognition Models](https://doi.org/10.1109/ijcnn60899.2024.10650300). Jinwen Xin et al., IJCNN 2024, 2024. `SpeechGuard · trigger: digital · recorded data`
+- [Aegis: Mitigating Targeted Bit-flip Attacks against Deep Neural Networks](https://arxiv.org/abs/2302.13520). Jialai Wang et al., USENIX Security 2023, 2023. `Aegis · trigger: digital, processing or fault · real system`
 - [Knowledge Distillation Based Defense for Audio Trigger Backdoor in Federated Learning (KDDF)](https://doi.org/10.1109/globecom54140.2023.10437601). Yuwen Chen et al., IEEE Globecom 2023, 2023. `KDDF · trigger: digital · recorded data`
 - [Backdoor Defence for Voice Print Recognition Model Based on Speech Enhancement and Weight Pruning](https://doi.org/10.1109/access.2022.3217322). Jiawei Zhu et al., IEEE Access, 2022. `trigger: digital · recorded data`
 - [Mitigating the Backdoor Attack by Federated Filters for Industrial IoT Applications](https://doi.org/10.1109/tii.2021.3112100). Boyu Hou et al., IEEE TII, 2021. `Federated backdoor filter · trigger: digital · recorded data`
@@ -418,7 +418,7 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 ## Evaluations, benchmarks, surveys, and standards
 
-- [Backdoor Attacks on Contrastive Continual Learning for IoT Systems](https://arxiv.org/abs/2602.13062). Tim et al., arXiv, 2026. `trigger: digital` `evaluation`
+- [Backdoor Attacks on Contrastive Continual Learning for IoT Systems](https://arxiv.org/abs/2602.13062). Tim et al., arXiv preprint, 2026. `trigger: digital` `evaluation`
 - [Backdoors in Learning-Based Industrial Robotic Arm Manipulation: An Empirical Security Study](https://arxiv.org/abs/2609.26868). Zijian Zhang et al., IROS 2026 Workshop, 2026. `evaluation`
 - [Can Federated Learning Backdoor Defenses Protect Parallel Split-Federated Learning?](https://doi.org/10.1109/wimob70978.2026.11777847). Yelyzaveta Klysa et al., IEEE WiMob 2026, 2026. `evaluation`
 - [HALO: Revealing the inadequacy of backdoor defenses in encrypted traffic classification](https://doi.org/10.1016/j.comnet.2026.112656). Wang et al., Computer Networks, 2026. `evaluation`
