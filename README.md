@@ -12,11 +12,11 @@ The list covers 347 studies published from 2019 to 2026: 213 attacks, 94 defense
 - **Validation**: *simulation*; *recorded data* with triggers added in software; *physical trigger* captured by a real sensor but evaluated offline; *real system* (a live device, a physical channel, or a closed loop; for defenses, execution on real hardware).
 - **Scope**: *IoT-specific* if the study uses IoT data, explicitly models an IoT system, or targets an IoT sensing modality; *general* if IoT serves only as motivation and all experiments use generic benchmarks.
 - **Defense evaluation** (defenses only, Y/N): `adaptive_attacker`, evaluated against an attacker who knows the defense; `quantized_eval`, evaluated on a quantized or compiled model.
-- **Peer review** (`peer_reviewed`, Y/N): N for studies available only as preprints. For every preprint we searched Semantic Scholar, Crossref, OpenAlex, and venue pages for a formal version (November 2026) and list that version where one exists; preprints show `arXiv preprint` as their venue.
+- **Peer review** (`peer_reviewed`, Y/N): N for studies available only as preprints. For every preprint we searched Semantic Scholar, Crossref, OpenAlex, and venue pages for a formal version and list that version where one exists; preprints show `arXiv preprint` as their venue.
 
 ## Search Strategy
 
-Sources: OpenAlex, Crossref, Semantic Scholar, arXiv, IEEE Xplore, the ACM Digital Library, and the proceedings of major security venues, followed by citation chasing. Window: 1 January 2019 to 18 November 2026.
+Sources: OpenAlex, Crossref, Semantic Scholar, arXiv, IEEE Xplore, the ACM Digital Library, and the proceedings of major security venues, followed by citation chasing. Window: January 2019 to October 2026.
 
 Each query combined the backdoor term `B = backdoor OR backdoors OR trojan OR trojaned OR (trigger AND poisoning)` with one group of scenario terms:
 
