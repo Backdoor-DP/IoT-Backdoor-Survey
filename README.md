@@ -236,8 +236,8 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 
 ### Compression-activated
 
-- [Mask2Keep: Mask-guided information transfer for backdoors resilient to compression-oriented pruning](https://doi.org/10.1016/j.neunet.2026.109463). Jing Shang et al., Neural Networks, 2027. `Mask2Keep · trigger: digital · recorded data`
 - [AGENTQ: Quantization-Conditioned Backdoor Attacks on LLM Agents](https://doi.org/10.18653/2026.emnlp-main.1566). Xiaoqun Liu et al., EMNLP 2026, 2026. `AGENTQ · trigger: digital, processing or fault · recorded data`
+- [Mask2Keep: Mask-guided information transfer for backdoors resilient to compression-oriented pruning](https://doi.org/10.1016/j.neunet.2026.109463). Jing Shang et al., Neural Networks, 2026. `Mask2Keep · trigger: digital · recorded data`
 - [Rounding-Guided Backdoor Injection in Deep Learning Model Quantization](https://doi.org/10.14722/ndss.2026.230113). Xiangxiang Chen et al., NDSS 2026, 2026. `QURA · trigger: digital, processing or fault · recorded data`
 - [Your Compiler is Backdooring Your Model: Understanding and Exploiting Compilation Inconsistency Vulnerabilities in Deep Learning Compilers](https://doi.org/10.1109/SP63933.2026.00097). Simin Chen et al., IEEE S&P 2026, 2026. `DcL-BD · trigger: digital, processing or fault · recorded data`
 - [Mind the Gap: A Practical Attack on GGUF Quantization](https://arxiv.org/abs/2505.23786). Kazuki Egashira et al., ICML 2025, 2025. `Error-based interval estimation · trigger: processing or fault · recorded data`
@@ -439,8 +439,8 @@ Selection: 473 records, 45 duplicates removed, 428 screened on title and abstrac
 - [Exploring Graph Neural Backdoors in Vehicular Networks: Fundamentals, Methodologies, Applications, and Future Perspectives](https://doi.org/10.1109/ojvt.2025.3550411). Xiao Yang et al., IEEE Open Journal of Vehicular Technology, 2025. `survey`
 - [A Survey of Wireless Sensing Security from a Role-Based View: Victim, Weapon, and Shield](https://arxiv.org/abs/2412.03064). Geng et al., arXiv, 2024. `survey`
 - [Data and Model Poisoning Backdoor Attacks on Wireless Federated Learning, and the Defense Mechanisms: A Comprehensive Survey](https://doi.org/10.1109/comst.2024.3361451). Yichen Wan et al., IEEE Communications Surveys & Tutorials, 2024. `survey`
+- [Edge Learning for 6G-enabled Internet of Things: A Comprehensive Survey of Vulnerabilities, Datasets, and Defenses](https://arxiv.org/abs/2306.10309). Ferrag et al., IEEE COMST, 2023. `survey`
 - [Is There a Trojan!: Literature Survey and Critical Evaluation of the Latest ML Based Modern Intrusion Detection Systems in IoT Environments](https://doi.org/10.5121/ijci.2023.120306). Vishal Karanam et al., International Journal on Cybernetics & Informatics, 2023. `survey`
-- [Edge Learning for 6G-enabled Internet of Things: A Comprehensive Survey of Vulnerabilities, Datasets, and Defenses](https://arxiv.org/abs/2306.10309). Ferrag et al., IEEE COMST. `survey`
 - [BackDFL: A Unified Benchmark For Backdoor Attacks and Defenses In Decentralized Federated Learning](https://doi.org/10.48550/arxiv.2608.21137). Mouhamed Amine Bouchiha et al., arXiv, 2026. `benchmark`
 - [NIDS Backdoor Benchmark: cleaned NIDS datasets and backdoor-poisoned training sets for XGBoost intrusion detectors](https://doi.org/10.5281/zenodo.23328624). Gia Hien Tran et al., Zenodo, 2026. `benchmark`
 - [BackFed: An Efficient & Standardized Benchmark Suite for Backdoor Attacks in Federated Learning](https://doi.org/10.48550/arxiv.2507.04903). Thinh Dao et al., arXiv, 2025. `benchmark`
